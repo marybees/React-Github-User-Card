@@ -1,12 +1,32 @@
 .App {
   text-align: center;
-  color: black;
+  color: rgb(48, 48, 48);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 .App-logo {
   text-align: center;
   height: 20vmin;
   pointer-events: none;
+  margin: 2% 0;
+}
+
+.search-box {
+  margin: 2%;
+}
+
+.profile {
+  background-color: #9cdaf0;
+  padding: 5%;
+  margin: 3% 10%;
+  border-radius: 15px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

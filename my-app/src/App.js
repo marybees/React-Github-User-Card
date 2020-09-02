@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import "./App.css";
-// import Card from "./Card";
+import { Button } from '@material-ui/core'
 
 class App extends React.Component {
   state = {
@@ -9,20 +9,6 @@ class App extends React.Component {
     profileSearch: "",
     error: "",
   };
-
-  // componentDidMount() {
-  //   axios
-  //     .get("https://api.github.com/users/marybees")
-  //     .then((response) => {
-  //       console.log(response.data);
-  //       this.setState({
-  //         gitHubProfiles: response.data
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       console.log("The data was not returned.", error);
-  //     });
-  // }
 
   handleChanges = (e) => {
     this.setState({
@@ -52,38 +38,34 @@ class App extends React.Component {
     console.log(this.state);
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>GitHub Profile Finder</h1>
+        <div className="header">
           <img
             src="https://github.githubassets.com/images/modules/logos_page/Octocat.png"
             className="App-logo"
             alt="logo"
           />
-          <input
+          <h1>GitHub Profile Finder</h1>
+        </div>
+        <div className="search">
+          <div className='search-box'><input
             type="text"
             value={this.state.profileSearch}
             onChange={this.handleChanges}
-          />
-          <button onClick={this.fetchProfiles}>Search</button>
+          /></div>
+          <Button variant='outlined' color='primary' onClick={this.fetchProfiles}>Search</Button>
           {this.state.error && (
             <p style={{ color: "red" }}>{this.state.error}</p>
           )}
           {this.state.gitHubProfile && (
             <p style={{ color: "red" }}>{this.state.gitHubProfile.username}</p>
           )}
-        </header>
-        <div className="profiles">
+        </div>
+        <div className="profile-container">
           {this.state.gitHubProfile.id && (
-            <div>
+            <div className="profile">
               <h2>{this.state.gitHubProfile.name}</h2>
-              <h3>
-                {this.state.gitHubProfile.login} |{" "}
-                {this.state.gitHubProfile.location}
-              </h3>
-              <h3>
-                {this.state.gitHubProfile.followers} Followers | Following{" "}
-                {this.state.gitHubProfile.following}
-              </h3>
+              <h3>{this.state.gitHubProfile.login} | {this.state.gitHubProfile.location}</h3>
+              <h3>{this.state.gitHubProfile.followers} Followers | Following {this.state.gitHubProfile.following}</h3>
             </div>
           )}
         </div>
